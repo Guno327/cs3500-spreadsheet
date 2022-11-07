@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:SS="clr-namespace:SS"
+             x:Class="SpreadsheetGUI.MainPage">
+    
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="File">
+            <MenuFlyoutItem Text="New" Clicked="NewClicked" />
+            <MenuFlyoutItem Text="Open" Clicked="OpenClicked" />
+            <MenuFlyoutItem Text="Save" Clicked="SaveClicked" />
+        </MenuBarItem>
+        <MenuBarItem Text="Help">
+            <MenuFlyoutItem Text="View Help Page" Clicked="HelpClicked" />
+        </MenuBarItem>
+        <MenuBarItem Text="Dark Mode">
+            <MenuFlyoutItem Text="Turn On" Clicked="EnableDarkMode" />
+            <MenuFlyoutItem Text="Turn Off" Clicked="DisableDarkMode" />
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
+    <Grid x:Name="G">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <HorizontalStackLayout Grid.Row="0">
+            <Label Text="Cell:"></Label>
+            <Entry Text="A1" x:Name="SelectedCellDisplay" VerticalTextAlignment="Center" IsEnabled="False" TextColor="White" />
+            <Label Text="Value:"></Label>
+            <Entry Text="" x:Name="SelectedValueDisplay" VerticalTextAlignment="Center" IsEnabled="False" TextColor="White" />
+            <Label Text="Content:" />
+            <Entry Text="" x:Name="SelectedContentEntry" Completed="ContentUpdated" />
+            <Button Pressed="ContentUpdated" Text="Enter" />
+            <Label Text="" x:Name="ErrorDisplay" HorizontalTextAlignment="End" />
+        </HorizontalStackLayout>
+        <SS:SpreadsheetGrid x:Name="spreadsheetGrid" Grid.Row="1" />
+
+
+    </Grid>
+
+
+</ContentPage>
+
